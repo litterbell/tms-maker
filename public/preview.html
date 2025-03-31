@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>预览</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #app {
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            transform: translate(0, 0);
+        }
+    </style>
+    <link rel="stylesheet" href="./generator/generator.css">
+</head>
+
+<body>
+<div id="app">
+    <landing :data="landingList" :source="dataSource" :key="key"></landing>
+</div>
+<script src="//unpkg.com/vue@next"></script>
+<script src="/generator/generator.umd.min.js"></script>
+<script>
+  (function () {
+    function autoRootFontSize () {
+      const u = navigator.userAgent
+      let clientWidth = document.documentElement.clientWidth
+      if (!!!u.match(/AppleWebKit.*Mobile.*/)) {
+        clientWidth = 375
+        document
+          .querySelector('#app')
+          .style
+          .width = '' + clientWidth + 'px'
+      }
+      document.documentElement.style.fontSize = clientWidth / 7.5 + 'px'
+    }
+
+    window.addEventListener('resize', autoRootFontSize)
+    autoRootFontSize()
+  })()
+  window.onload = function () {
+    const app = Vue.createApp({
+      data () {
+        return {
+          landingList: [],
+          dataSource: {},
+          key: 0
+        }
+      }
+    })
+    app.use(window.generator)
+    const vm = app.mount('#app')
+    function updateApp () {
+      if (localStorage.getItem('previewPage')) {
+        const data = JSON.parse(localStorage.getItem('previewPage'))
+        vm.landingList = data.allItems
+        vm.dataSource = data.dataSource
+        vm.key++
+      }
+    }
+    updateApp()
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'previewPage') {
+        updateApp()
+      }
+    })
+  }
+
+</script>
+</body>
+
+</html>

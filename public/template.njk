@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="{{keywords}}">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>{{title}}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #app {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            margin:0 auto;
+            transform: translate(0, 0);
+        }
+    </style>
+    {% for item in styleList %}
+        <link rel="stylesheet" href="{{item}}">
+     {% endfor %}
+</head>
+
+<body>
+    <div id="app">
+        <landing :data="landingList" :source="dataSource"></landing>
+    </div>
+    {% for item in javascriptList %}
+        <script src="{{item}}"></script>
+    {% endfor %}
+    <script>
+      window._pageId = "{{pageId}}";
+      (function () {
+        function autoRootFontSize () {
+          const u = navigator.userAgent
+          let clientWidth = document.documentElement.clientWidth
+          if (!!!u.match(/AppleWebKit.*Mobile.*/)) {
+            clientWidth = 375
+            document
+              .querySelector('#app')
+              .style
+              .width = '' + clientWidth + 'px'
+          }
+          document.documentElement.style.fontSize = clientWidth / 7.5 + 'px'
+        }
+        window.addEventListener('resize', autoRootFontSize)
+        autoRootFontSize()
+      })()
+      const app = Vue.createApp({
+        data () {
+          return {
+            landingList: {{landingData|dump|safe}},
+            dataSource: {{dataSource|dump|safe}}
+          }
+        },
+      })
+      app.use(window.generator)
+      app.mount('#app')
+    </script>
+</body>
+
+</html>
