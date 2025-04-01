@@ -21,7 +21,7 @@ export default function useExportZip () {
       keywords: store.state.editor.pageConfig.keywords,
       landingData: store.state.editor.allItems,
       dataSource: store.state.editor.dataSource,
-      javascriptList: ['//unpkg.com/vue@next', './generator.umd.min.js'],
+      javascriptList: ['//unpkg.com/vue@3.1.1', './generator.umd.min.js'],
       styleList: ['./generator.css']
     }
     try {

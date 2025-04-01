@@ -29,7 +29,7 @@ export default function usePublishRemote () {
     if (!pageId) return ElMessage.error('发布前请先保存页面')
     if (!accessToken || !githubName || !githubRepo) return ElMessage.error('请完善发布配置信息')
     const tempPath = `page-${new Date().getTime()}`
-    const githubCDN = `https://cdn.jsdelivr.net/gh/${githubName}/${githubRepo}/${tempPath}/`
+    const githubCDN = `https://cdn.jsdelivr.net/gh/${githubName}/${githubRepo}@gh-pages/${tempPath}/`
     const pageConfig = {
       pageId: route.params.id,
       title: store.state.editor.pageConfig.title,
@@ -37,7 +37,7 @@ export default function usePublishRemote () {
       keywords: store.state.editor.pageConfig.keywords,
       landingData: store.state.editor.allItems,
       dataSource: store.state.editor.dataSource,
-      javascriptList: ['//unpkg.com/vue@next', `${githubCDN}generator.umd.min.js`],
+      javascriptList: ['//unpkg.com/vue@3.5.13', `${githubCDN}generator.umd.min.js`],
       styleList: [`${githubCDN}generator.css`]
     }
     publishLoading.value = true
@@ -97,7 +97,8 @@ export default function usePublishRemote () {
       repo: githubRepo,
       path: path,
       message: `publish ${tempPath}`,
-      content: content
+      content: content,
+      branch: 'gh-pages'
     })
   }
   return {
