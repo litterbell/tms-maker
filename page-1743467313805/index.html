@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>我是测试页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #app {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            margin:0 auto;
+            transform: translate(0, 0);
+        }
+    </style>
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/litterbell/tms-maker/page-1743467313805/generator.css">
+     
+</head>
+
+<body>
+    <div id="app">
+        <landing :data="landingList" :source="dataSource"></landing>
+    </div>
+    
+        <script src="//unpkg.com/vue@3.1.1"></script>
+    
+        <script src="https://cdn.jsdelivr.net/gh/litterbell/tms-maker/page-1743467313805/generator.umd.min.js"></script>
+    
+    <script>
+      window._pageId = "9f86c65667eb331500435d5e1edb8247";
+      (function () {
+        function autoRootFontSize () {
+          const u = navigator.userAgent
+          let clientWidth = document.documentElement.clientWidth
+          if (!!!u.match(/AppleWebKit.*Mobile.*/)) {
+            clientWidth = 375
+            document
+              .querySelector('#app')
+              .style
+              .width = '' + clientWidth + 'px'
+          }
+          document.documentElement.style.fontSize = clientWidth / 7.5 + 'px'
+        }
+        window.addEventListener('resize', autoRootFontSize)
+        autoRootFontSize()
+      })()
+      const app = Vue.createApp({
+        data () {
+          return {
+            landingList: [{"id":"blocks-d196fa4a-2bb0-4fb4-9371-3776643859ea","styles":{"marginTop":0,"marginLeft":0,"marginRight":0,"marginBottom":0,"borderTopWidth":0,"borderRightWidth":0,"borderBottomWidth":0,"borderLeftWidth":0,"paddingTop":0,"paddingRight":0,"paddingBottom":0,"paddingLeft":0,"width":"100%","height":"100%","color":"rgba(0,0,0,1)","fontSize":20,"overflow":"hidden","textOverflow":"ellipsis","whiteSpace":"nowrap","backgroundColor":"rgba(255,255,255,1)"},"componentName":"blocks-single-text","description":"文本组件","rect":{"height":50,"width":375,"left":0,"top":50},"innerText":"我是文本域","animations":[],"events":[]},{"id":"blocks-fd105958-a197-4326-b676-5b356194d2fa","styles":{"marginTop":0,"marginLeft":0,"marginRight":0,"marginBottom":0,"borderTopWidth":0,"borderRightWidth":0,"borderBottomWidth":0,"borderLeftWidth":0,"paddingTop":0,"paddingRight":0,"paddingBottom":0,"paddingLeft":0,"width":"100%","height":"100%","color":"rgba(0,0,0,1)","fontSize":20,"backgroundColor":"rgba(255,255,255,1)"},"componentName":"blocks-text","description":"文本组件","rect":{"height":50,"width":375,"left":0,"top":0},"innerText":"我是标题","animations":[],"events":[]}],
+            dataSource: {"defaultText":"请填写文本","defaultImage":"//via.placeholder.com/375x200?text=default+image+toy+maker","defaultSingleText":"我是单行文本区域，超出文本区域会自动显示省略号...","defaultMultipleText":"我是多行文本区域，超出文本区域会自动显示省略号，我是多行文本区域，超出文本区域会自动显示省略号..."}
+          }
+        },
+      })
+      app.use(window.generator)
+      app.mount('#app')
+    </script>
+</body>
+
+</html>
