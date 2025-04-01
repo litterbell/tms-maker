@@ -4,6 +4,7 @@
     <el-header class="bg-gray-90 flex justify-end items-center shadow-sm z-10">
       <el-image style="height:45px;width:146px;" :src="require('../assets/logo.png')"
                 class="rounded-2xl border mr-auto shadow-sm"></el-image>
+      <el-button @click="handleToList">返回列表</el-button>
       <el-button type="danger" @click="clearCanvas">清空画布</el-button>
       <el-button type="info" @click="handleUpload">
         <input ref="psd" type="file" class="hidden" @change="uploadFile" accept=".psd">
@@ -81,7 +82,7 @@ import useEditorMethod from '@/hooks/useEditorMethod'
 import usePsdParse from '@/hooks/usePsdParse'
 import usePageConfig from '@/hooks/usePageConfig'
 import usePublishRemote from '@/hooks/usePublishRemote'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import PageConfig from '@/components/common/page-config'
 import useImportJSON from '@/hooks/useImportJSON'
 import useExportJSON from '@/hooks/useExportJSON'
@@ -92,6 +93,7 @@ export default {
   setup () {
     const store = useStore()
     const route = useRoute()
+    const router = useRouter()
     const vdrList = computed(() => {
       return store.state.editor.allItems
     })
@@ -152,6 +154,12 @@ export default {
     const handleImportFile = () => {
       jsonRef.value.click()
     }
+    const handleToList = async () => {
+      console.log(111111111)
+      router.push({
+        name: 'List'
+      })
+    }
     const tabActive = ref('editor-area')
     const clearCanvas = async () => {
       await store.dispatch('editor/clearActiveItem')
@@ -194,7 +202,8 @@ export default {
       publishLoading,
       exportFile,
       importFile,
-      handleImportFile
+      handleImportFile,
+      handleToList,
     }
   }
 }
