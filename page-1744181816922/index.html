@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #app {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            margin:0 auto;
+            transform: translate(0, 0);
+        }
+    </style>
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/litterbell/tms-maker@gh-pages/page-1744181816922/generator.css">
+     
+</head>
+
+<body>
+    <div id="app">
+        <landing :data="landingList" :source="dataSource"></landing>
+    </div>
+    
+        <script src="//unpkg.com/vue@3.5.13"></script>
+    
+        <script src="https://cdn.jsdelivr.net/gh/litterbell/tms-maker@gh-pages/page-1744181816922/generator.umd.min.js"></script>
+    
+    <script>
+      window._pageId = "1b9686ec67f61a2f00c564fc1bbba470";
+      (function () {
+        function autoRootFontSize () {
+          const u = navigator.userAgent
+          let clientWidth = document.documentElement.clientWidth
+          if (!!!u.match(/AppleWebKit.*Mobile.*/)) {
+            clientWidth = 375
+            document
+              .querySelector('#app')
+              .style
+              .width = '' + clientWidth + 'px'
+          }
+          document.documentElement.style.fontSize = clientWidth / 7.5 + 'px'
+        }
+        window.addEventListener('resize', autoRootFontSize)
+        autoRootFontSize()
+      })()
+      const app = Vue.createApp({
+        data () {
+          return {
+            landingList: [{"id":"blocks-e7e97a15-9d2e-4573-9e84-24eead0ccddd","styles":{"marginTop":0,"marginLeft":0,"marginRight":0,"marginBottom":0,"borderTopWidth":0,"borderRightWidth":0,"borderBottomWidth":0,"borderLeftWidth":0,"paddingTop":0,"paddingRight":0,"paddingBottom":0,"paddingLeft":0,"width":"100%","height":"100%","color":"rgba(0,0,0,1)","fontSize":20,"backgroundColor":"rgba(255,255,255,1)"},"componentName":"blocks-text","description":"文本组件","rect":{"height":50,"width":375,"left":0,"top":0},"innerText":"#{{defaultText}}","animations":[],"events":[]},{"id":"blocks-38b8ce7e-befc-49f2-be86-f495cb6b4f38","styles":{"marginTop":0,"marginLeft":0,"marginRight":0,"marginBottom":0,"borderTopWidth":0,"borderRightWidth":0,"borderBottomWidth":0,"borderLeftWidth":0,"paddingTop":0,"paddingRight":0,"paddingBottom":0,"paddingLeft":0,"width":"100%","height":"100%","overflow":"hidden"},"componentName":"blocks-image","description":"图片组件","rect":{"height":200,"width":375,"left":0,"top":208},"events":[],"animations":[],"src":"#{{defaultImage}}"}],
+            dataSource: {"defaultText":"请填写文本","defaultImage":"//via.placeholder.com/375x200?text=default+image+toy+maker","defaultSingleText":"我是单行文本区域，超出文本区域会自动显示省略号...","defaultMultipleText":"我是多行文本区域，超出文本区域会自动显示省略号，我是多行文本区域，超出文本区域会自动显示省略号..."}
+          }
+        },
+      })
+      app.use(window.generator)
+      app.mount('#app')
+    </script>
+</body>
+
+</html>
